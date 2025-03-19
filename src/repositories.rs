@@ -62,3 +62,15 @@ impl CrateRepository {
         diesel::delete(crates::table.find(id)).execute(c).await
     }
 }
+
+pub struct UserRepository;
+
+impl UserRepository {
+    pub async fn create(c: &mut AsyncPgConnection, new_user: NewUser) -> QueryResult<User>{
+        diesel::insert_into(users::table)
+        .values(new_user)
+        .get_result(c).await
+    }
+}
+
+pub struct RoleRepository;
