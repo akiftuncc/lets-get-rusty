@@ -114,6 +114,32 @@ fn test_update_crate(){
         "created_at":a_crate["created_at"]  
     }));
 
+    // Test author switch
+    let rustacean2 = common::create_test_rustacean(&client);
+    let response = client.put(format!("{}/crates/{}", common::APP_HOST, a_crate["id"]))
+    .json(&json!({
+        "code":"2000",
+        "name":"updated crate",
+        "version":"0.2",
+        "description":"2000 updated crate description,2000 updated crate description,2000 updated crate description,2000 updated crate description,2000 updated crate description",
+        "rustacean_id": rustacean2["id"]
+    }))
+    .send()
+    .unwrap();
+    assert_eq!(response.status(), StatusCode::OK);
+
+    let a_crate: Value = response.json().unwrap();
+    assert_eq!(a_crate, json!({
+        "id":a_crate["id"],
+        "code":"2000",
+        "name":"updated crate",
+        "version":"0.2",
+        "description":"2000 updated crate description,2000 updated crate description,2000 updated crate description,2000 updated crate description,2000 updated crate description",
+        "rustacean_id": rustacean2["id"],
+        "created_at":a_crate["created_at"]  
+    }));
+  
+
     common::delete_test_crate(&client, a_crate);
     common::delete_test_rustacean(&client, rustacean);
 }
