@@ -3,7 +3,7 @@ use crate::repositories::CrateRepository;
 use rocket::http::Status;
 use crate::rocket_routes::DbConn;
 use rocket::response::status::{Custom,NoContent};
-use rocket::serde::json::{json, Json, Value};
+use rocket::serde::json::{Json, serde_json::json, Value};
 use rocket_db_pools::Connection;
 
 
