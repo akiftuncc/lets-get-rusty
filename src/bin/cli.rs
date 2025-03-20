@@ -1,5 +1,5 @@
 
-use clap::{Arg, Command};
+use clap::{value_parser, Arg, Command};
 extern crate cr8s;
 
 #[tokio::main]
@@ -25,7 +25,7 @@ async fn main() {
                     Command::new("delete")
                         .about("Delete existing users")
                         .arg_required_else_help(true)
-                        .arg(Arg::new("id").required(true))
+                        .arg(Arg::new("id").required(true).value_parser(value_parser!(i32)))
                 )
         ).get_matches();
 
@@ -37,8 +37,8 @@ async fn main() {
                     sub_matches.get_many::<String>("roles").unwrap().map(|v| v.to_owned()).collect(),
                 ).await,
                 Some(("list", _)) => cr8s::commands::list_users().await,
-                Some(("delete", _)) => cr8s::commands::delete_user(
-                    sub_matches.get_one::<i32>("username").unwrap().to_owned(),
+                Some(("delete", sub_matches)) => cr8s::commands::delete_user(
+                    sub_matches.get_one::<i32>("id").unwrap().to_owned(),
                 ).await,
                 _ => {},
         },
