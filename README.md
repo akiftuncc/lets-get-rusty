@@ -1,10 +1,8 @@
-# CR8S - Rust Crates Management System
+# Rust Crates Management System
 
 A Rust application for managing crates and rustaceans, built with Rocket and Diesel ORM.
 
 ## Project Overview
-
-CR8S is a web application and CLI tool that allows you to:
 
 - Manage rustaceans (Rust developers)
 - Track crates (Rust packages)

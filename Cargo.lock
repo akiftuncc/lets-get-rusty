@@ -350,23 +350,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "cr8s"
-version = "0.1.0"
-dependencies = [
- "argon2",
- "chrono",
- "clap",
- "diesel",
- "diesel-async",
- "reqwest",
- "rocket",
- "rocket_db_pools",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
 name = "crypto-common"
 version = "0.1.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1813,6 +1796,23 @@ name = "rustversion"
 version = "1.0.20"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eded382c5f5f786b989652c49544c4877d9f015cc22e145a5ea8ea66c2921cd2"
+
+[[package]]
+name = "rusty"
+version = "0.1.0"
+dependencies = [
+ "argon2",
+ "chrono",
+ "clap",
+ "diesel",
+ "diesel-async",
+ "reqwest",
+ "rocket",
+ "rocket_db_pools",
+ "serde",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "ryu"

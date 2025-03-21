@@ -1,11 +1,11 @@
 
 use clap::{value_parser, Arg, Command};
-extern crate cr8s;
+extern crate rusty;
 
 #[tokio::main]
 async fn main() {
-    let matches = Command::new("cr8s")
-        .about("Cr8s commands")
+    let matches = Command::new("rusty")
+        .about("Rusty commands")
         .arg_required_else_help(true)
         .subcommand(
             Command::new("users")
@@ -31,13 +31,13 @@ async fn main() {
 
     match  matches.subcommand() {
         Some(("users", sub_matches)) => match sub_matches.subcommand() {
-                Some(("create", sub_matches)) => cr8s::commands::create_user(
+                Some(("create", sub_matches)) => rusty::commands::create_user(
                     sub_matches.get_one::<String>("username").unwrap().to_owned(),
                     sub_matches.get_one::<String>("password").unwrap().to_owned(),
                     sub_matches.get_many::<String>("roles").unwrap().map(|v| v.to_owned()).collect(),
                 ).await,
-                Some(("list", _)) => cr8s::commands::list_users().await,
-                Some(("delete", sub_matches)) => cr8s::commands::delete_user(
+                Some(("list", _)) => rusty::commands::list_users().await,
+                Some(("delete", sub_matches)) => rusty::commands::delete_user(
                     sub_matches.get_one::<i32>("id").unwrap().to_owned(),
                 ).await,
                 _ => {},
