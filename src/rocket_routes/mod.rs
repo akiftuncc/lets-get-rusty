@@ -5,7 +5,7 @@ use rocket::serde::json::{json, Value};
 
 pub mod rustaceans;
 pub mod crates;
-
+pub mod authorization;
 
 #[derive(rocket_db_pools::Database)]
 #[database("postgres")]
