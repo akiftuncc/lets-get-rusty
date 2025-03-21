@@ -56,16 +56,12 @@ The application exposes a REST API on port 8000. Some example endpoints:
 The application includes a command-line interface for user management:
 
 ```bash
-# Show user creation arguments
 docker-compose exec app cargo run --bin cli users create
 
-# Create a user
 docker-compose exec app cargo run --bin cli users create username password role
 
-# List all users
 docker-compose exec app cargo run --bin cli users list
 
-# Delete a user by ID
 docker-compose exec app cargo run --bin cli users delete 1
 ```
 
@@ -84,16 +80,12 @@ docker-compose exec app cargo run --bin cli users delete 1
 ### Database Migrations
 
 ```bash
-# Create a new migration
 docker-compose exec app diesel migration generate <migration_name>
 
-# Run pending migrations
 docker-compose exec app diesel migration run
 
-# Revert the last migration
 docker-compose exec app diesel migration revert
 
-# List migrations
 docker-compose exec app diesel migration list
 ```
 
@@ -102,7 +94,3 @@ docker-compose exec app diesel migration list
 ```bash
 docker-compose exec app cargo test
 ```
-
-## License
-
-[Your License Here]
